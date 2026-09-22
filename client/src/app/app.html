@@ -1,0 +1,15 @@
+<div class="card bg-base-100 w-1/2 mx-auto p-10 mt-10 shadow-xl">
+    <h3 class="text-3xl text-red-500 font-serif">{{title}}</h3>
+
+    <ul class="list">
+        @for(member of members(); track member.id){
+            <li class="list-row items-center">
+                <img src="/user.png" alt="User" class="w-12 h-12 rounded-box mr-4">
+                <div class="flex flex-col">
+                    <span class="font-bold">{{member.displayName}}</span>
+                    <span class="text-sm text-gray-500">{{member.email}}</span>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
