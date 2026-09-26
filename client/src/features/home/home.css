@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.hero-card {
+  animation: floatCard 5.5s ease-in-out infinite;
+}
+
+.member-card {
+  position: relative;
+}
+
+.member-card:hover .badge {
+  transform: translateY(-2px);
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card,
+  .member-card,
+  .member-card img,
+  .btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}

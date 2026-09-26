@@ -1,0 +1,78 @@
+<header class="sticky top-0 z-50 w-full border-b border-white/20 bg-white/35 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3" aria-label="FetchMate logo">
+            <div
+                class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br from-amber-300 via-pink-300 to-violet-400 shadow-lg shadow-pink-200/60">
+                <a routerLink="/">
+                    <img src="/beagle.gif" alt="FetchMate beagle mascot"
+                        class="block h-full w-full object-cover bg-linear-to-br from-amber-200 via-pink-100 to-violet-200" />
+                </a>
+            </div>
+            <div>
+                <p class="text-2xl font-black tracking-tight text-slate-800">FetchMate</p>
+            </div>
+        </div>
+
+        <nav class="hidden items-center gap-7 text-lg font-semibold text-slate-600 lg:flex"
+            aria-label="Main navigation">
+            @if(account.currentUser()){
+                <a routerLink="/members" routerLinkActive="text-accent" class="cursor-pointer transition hover:text-accent">Matches</a>
+                <a routerLink="/lists" routerLinkActive="text-accent" class="cursor-pointer transition hover:text-accent">Lists</a>
+                <a routerLink="/messages" routerLinkActive="text-accent" class="cursor-pointer transition hover:text-accent">Messages</a>
+                <div class="dropdown dropdown-hover">
+                <a tabindex="0" class="cursor-pointer transition hover:text-accent">About</a>
+                    <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li><a routerLink="about/item1" class="cursor-pointer">Item 1</a></li>
+                        <li><a routerLink="about/item2"class="cursor-pointer">Item 2</a></li>
+                    </ul>
+                </div>
+            }
+            
+        </nav>
+
+        <div class="flex items-center gap-3">
+            @if (!account.isLoggedIn()) {
+                <button type="button" class="btn btn-outline btn-lg rounded-full px-4 font-bold text-slate-700"
+                    (click)="openLoginModal()">
+                    Login
+                </button>
+                <button type="button"
+                    class="btn btn-primary btn-lg rounded-full px-5 font-bold shadow-lg shadow-pink-300/50"
+                    (click)="openRegisterModal()">
+                    Join the pack
+                </button>
+            } @else {
+                <div class="flex items-center gap-3 rounded-full border border-slate-700 bg-white/75 px-2 py-2 shadow-sm shadow-violet-100/60">
+                    <div class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-linear-to-br from-amber-200 via-pink-200 to-violet-200">
+                        <img [src]="account.currentUser()?.profileImageUrl || '/default.icon.png'" alt="User profile" class="block h-full w-full object-cover" />
+                    </div>
+                    <span class="px-1 text-lg font-extrabold text-accent">{{ account.currentUser()?.displayName || 'My pack' }}</span>
+                    <div class="tooltip tooltip-bottom">
+                    <div class="tooltip-content bg-linear-to-r from-rose-50 via-white to-pink-50 border-rose-200">
+                        <div class="animate-bounce text-accent -rotate-10 text-2xl font-black">Paw Out!</div>
+                    </div>
+                    <button type="button" class="btn btn-ghost rounded-full px-3 font-bold text-slate-700" (click)="logout()" aria-label="Logout">
+                        <img src="/logout.icon.png" alt="Logout" class="h-8 w-8 object-contain" />
+                    </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</header>
+
+@if (isLoginOpen) {
+    <app-login
+        [isOpen]="isLoginOpen"
+        (closed)="closeLoginModal()"
+        (switchToRegister)="switchFromLoginToRegister()"
+    />
+}
+
+@if (isRegisterOpen) {
+    <app-register
+        [isOpen]="isRegisterOpen"
+        (closed)="closeRegisterModal()"
+        (switchToLogin)="switchFromRegisterToLogin()"
+    />
+}
