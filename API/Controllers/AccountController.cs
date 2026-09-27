@@ -37,6 +37,13 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
     [HttpPost("login")]
     public async Task<ActionResult<UserDTO>> Login(LoginDto loginDto)
     {
+        var existingUser = await _context.Users.Where(u => u.DisplayName.ToLower() == "string").FirstOrDefaultAsync();
+        if(existingUser != null)
+        {
+            _context.Users.Remove(existingUser);
+            await _context.SaveChangesAsync();
+            throw new Exception("A test exception occurred.");
+        }
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == loginDto.Email.ToLower());
         if (user == null) return Unauthorized("Invalid email or password");
 

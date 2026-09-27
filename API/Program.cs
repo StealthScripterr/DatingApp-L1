@@ -2,8 +2,10 @@ using System.Text;
 using API.Data;
 using API.Interfaces;
 using API.Services;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,9 +35,18 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseDeveloperExceptionPage();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
+app.UseExceptionMiddleware();
 app.UseCors("AngularClient");
 
 app.UseAuthentication();

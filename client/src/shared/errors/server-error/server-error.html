@@ -1,0 +1,42 @@
+<div class="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(255,187,92,0.28),transparent_20%),radial-gradient(circle_at_bottom_right,rgba(245,119,179,0.22),transparent_24%),linear-gradient(180deg,#fffaf5_0%,#f5f1ff_100%)] text-slate-800">
+  <main class="mx-auto flex max-w-3xl flex-col items-center justify-center px-4 py-30 text-center sm:px-6 lg:px-8">
+    <div class="relative">
+      <div class="absolute -left-10 -top-8 h-24 w-24 rounded-full bg-pink-200/80 blur-3xl"></div>
+      <div class="absolute -right-8 bottom-0 h-28 w-28 rounded-full bg-violet-200/80 blur-3xl"></div>
+
+      <div class="server-error-card card relative w-full max-w-md overflow-hidden border border-white/60 bg-white/80 p-8 shadow-[0_30px_80px_rgba(98,72,142,0.22)] backdrop-blur-xl">
+        <div class="mx-auto inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white/70 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-accent shadow-sm">
+          <span>🐾</span>
+          Tail between the legs
+        </div>
+
+        <div class="mt-6 text-7xl">🐕‍🦺⚠️</div>
+
+        <h1 class="mt-6 text-6xl font-black leading-none tracking-[-0.06em] text-slate-900 sm:text-7xl">
+          500
+        </h1>
+
+        <p class="mt-4 text-lg font-bold text-slate-700">
+          {{ error?.message || 'Ruh-roh! Something went wrong on our end.' }}
+        </p>
+        <p class="mt-2 text-base leading-7 text-slate-600">
+          Our pups are chasing down the bug. Please try again in a moment.
+        </p>
+
+        @if (error?.details) {
+          <button type="button" (click)="detailsToggle()" class="btn btn-outline btn-secondary mt-6 rounded-full border-violet-200 bg-white/60 px-6 text-sm font-bold text-accent">
+            {{ showDetails ? 'Hide details' : 'Show details' }}
+          </button>
+
+          @if (showDetails) {
+            <pre class="mt-4 max-h-48 overflow-auto rounded-2xl border border-violet-100 bg-white/70 p-4 text-left text-xs leading-6 text-slate-600">{{ error.details }}</pre>
+          }
+        }
+
+        <a (click)="goBack()" class="btn btn-primary bg-accent mt-8 rounded-full border-0 px-7 text-base font-extrabold shadow-[0_18px_38px_rgba(236,118,164,0.36)]">
+          Take me back
+        </a>
+      </div>
+    </div>
+  </main>
+</div>
