@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { ApiError } from '../../../types/error';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-server-error',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './server-error.html',
   styleUrl: './server-error.css',
 })
@@ -23,10 +23,5 @@ export class ServerError {
 
   detailsToggle() {
     this.showDetails = !this.showDetails;
-  }
-
-  
-  goBack() {
-    this.location.back();
   }
 }
