@@ -17,13 +17,13 @@
         </h1>
 
         <p class="mt-4 text-lg font-bold text-slate-700">
-          {{ error?.message || 'Ruh-roh! Something went wrong on our end.' }}
+          {{ error.message || 'Ruh-roh! Something went wrong on our end.' }}
         </p>
         <p class="mt-2 text-base leading-7 text-slate-600">
           Our pups are chasing down the bug. Please try again in a moment.
         </p>
 
-        @if (error?.details) {
+        @if (error.details) {
           <button type="button" (click)="detailsToggle()" class="btn btn-outline btn-secondary mt-6 rounded-full border-violet-200 bg-white/60 px-6 text-sm font-bold text-accent">
             {{ showDetails ? 'Hide details' : 'Show details' }}
           </button>

@@ -4,7 +4,7 @@
 
 @layer components {
   #fetchmate-toast-container {
-    @apply fixed right-4 top-4 z-[100] flex w-full max-w-sm flex-col items-end gap-3;
+    @apply fixed right-4 top-4 z-100 flex w-full max-w-sm flex-col items-end gap-3;
   }
 
   .fetchmate-toast {
@@ -13,15 +13,15 @@
   }
 
   .fetchmate-toast--success {
-    @apply border-emerald-200 bg-gradient-to-r from-emerald-50 via-white to-amber-50 text-slate-700;
+    @apply border-emerald-200 bg-linear-to-r from-emerald-50 via-white to-amber-50 text-slate-700;
   }
 
   .fetchmate-toast--error {
-    @apply border-rose-200 bg-gradient-to-r from-rose-50 via-white to-pink-50 text-slate-700;
+    @apply border-rose-200 bg-linear-to-r from-rose-50 via-white to-pink-50 text-slate-700;
   }
 
   .fetchmate-toast--info {
-    @apply border-violet-200 bg-gradient-to-r from-violet-50 via-white to-pink-50 text-slate-700;
+    @apply border-violet-200 bg-linear-to-r from-violet-50 via-white to-pink-50 text-slate-700;
   }
 
   .fetchmate-toast__icon {
