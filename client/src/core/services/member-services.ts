@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { User } from "../../types/user";
+import { DogDetails } from "../../types/dog-details";
 import { inject } from "@angular/core/primitives/di";
 import { Injectable, signal } from "@angular/core";
 
@@ -12,6 +12,6 @@ export class MemberServices {
   private http = inject(HttpClient);
 
   getMembers() {
-    return this.http.get<User[]>(this.baseUrl + 'members');
+    return this.http.get<DogDetails[]>(this.baseUrl + 'members');
   }
 }

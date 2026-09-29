@@ -1,31 +1,31 @@
-using API.Data;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
+[Authorize]
 public class MembersController : BaseApiController
 {
 
-    private readonly AppDbContext _context;
+    private readonly IDogDetailRepository _dogDetailRepository;
 
-    public MembersController(AppDbContext context)
+    public MembersController(IDogDetailRepository dogDetailRepository)
     {
-        _context = context;
+        _dogDetailRepository = dogDetailRepository;
     }
+
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers()
+    public async Task<ActionResult<IReadOnlyList<DogDetails>>> GetMembers()
     {
-        var members = await _context.Users.ToListAsync();
+        var members = await _dogDetailRepository.GetAllDogDetailsAsync();
         return Ok(members);
     }
-    
-    [Authorize]
+
     [HttpGet("{id}")]
-    public async Task<ActionResult<AppUser>> GetMember(string id)
+    public async Task<ActionResult<DogDetails>> GetMember(string id)
     {
-        var member = await _context.Users.FindAsync(id);
+        var member = await _dogDetailRepository.GetDogDetailsByIdAsync(id);
         if (member == null) return NotFound();
         return Ok(member);
     }
