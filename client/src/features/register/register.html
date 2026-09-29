@@ -28,7 +28,7 @@
 
                 <label class="form-control w-full">
                     <span class="mb-2 text-sm font-bold text-slate-600">Dog age</span>
-                    <input [(ngModel)]="registerData.age" name="dogAge" type="text" placeholder="2 yrs"
+                    <input [(ngModel)]="registerData.age" name="dogAge" type="number" min="0" step="1" placeholder="2"
                         class="input input-bordered input-primary w-full rounded-2xl border-violet-200 bg-violet-50/50 text-slate-700 placeholder:text-slate-400" />
                 </label>
 

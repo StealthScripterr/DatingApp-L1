@@ -41,6 +41,7 @@ export class Login {
         console.error('Login failed:', error);
       },
     });
+    this.account.getUserProfileImageUrl();
   }
 
   closeLoginModal(): void {

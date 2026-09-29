@@ -87,7 +87,7 @@
             </div>
 
             <figure class="relative overflow-hidden p-3">
-              <img src="/user.png" alt="{{ member.displayName }} profile" class="h-72 w-full rounded-[1.3rem] object-cover transition duration-500 group-hover:scale-105" />
+              <img [src]="member.profileImageUrl" [alt]="member.displayName + ' profile'" class="h-72 w-full rounded-[1.3rem] object-cover transition duration-500 group-hover:scale-105" />
             </figure>
 
             <div class="card-body p-5 pt-0">

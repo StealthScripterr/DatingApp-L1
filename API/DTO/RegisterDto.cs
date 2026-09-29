@@ -11,8 +11,8 @@ public class RegisterDto
 {
     [Required]
     public string DisplayName { get; set; } = string.Empty;
-    public string? Age { get; set; }
-    [JsonPropertyName("profilePicture")]
+    public int? Age { get; set; }
+    [JsonPropertyName("profileImageUrl")]
     public string? ProfileImageUrl { get; set; }
     [Required]
     [EmailAddress]

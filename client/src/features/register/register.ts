@@ -17,7 +17,7 @@ export class Register {
   protected account = inject(AccountService);
   protected registerData: RegisterData = {
     displayName: '',
-    age: '',
+    age: 0,
     email: '',
     password: '',
     profileImageUrl: '',

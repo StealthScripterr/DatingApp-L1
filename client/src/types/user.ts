@@ -1,8 +1,8 @@
 export interface User {
   id: string;
   displayName: string;
-  age: string;
   email: string;
+  age?: number | null;
   profileImageUrl?: string;
   token: string;
 };
@@ -14,7 +14,7 @@ export type LoginCredentials = {
 
 export type RegisterData = {
     displayName: string;
-    age: string;
+    age: number;
     email: string;
     password: string;
     profileImageUrl?: string; // Optional profile picture
